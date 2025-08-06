@@ -1,30 +1,94 @@
-# Kokonut UI portfolio
+# 🚀 Portafolio de Ruben Rivera
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+> Desarrollador de software con pasión por crear soluciones innovadoras
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/iamblack0s-projects/v0-kokonut-ui-portfolio)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/JkejLnQJ8tN)
+[![Next.js](https://img.shields.io/badge/Next.js-15.2.4-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0.2-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.1.9-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 
-## Overview
+## 📋 Descripción
 
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
+Portafolio web moderno y minimalista que muestra mis proyectos, habilidades técnicas y experiencia como desarrollador. Diseñado con un enfoque en la experiencia de usuario y optimizado para rendimiento.
 
-## Deployment
+## � Proyectos Destacados
 
-Your project is live at:
+### � Fazil
+App de finanzas personales con IA que permite registrar gastos usando la voz y clasificarlos automáticamente. Ofrece estadísticas visuales, presupuestos, soporte offline y recompensas por ver anuncios.
 
-**[https://vercel.com/iamblack0s-projects/v0-kokonut-ui-portfolio](https://vercel.com/iamblack0s-projects/v0-kokonut-ui-portfolio)**
+**Tecnologías utilizadas:**
+- React Native
+- Expo  
+- Tailwind
+- JavaScript
+- Supabase
+- API RESTful
+- PostgreSQL
 
-## Build your app
+---
 
-Continue building your app on:
+### 🌊 AquaSense
+Aplicación web que permite evaluar la salud de ecosistemas costeros mediante análisis automatizado de imágenes de playas usando OpenCV y técnicas de visión por computadora.
 
-**[https://v0.dev/chat/projects/JkejLnQJ8tN](https://v0.dev/chat/projects/JkejLnQJ8tN)**
+**Tecnologías utilizadas:**
+- Flask
+- OpenCV
+- HTML
+- CSS
+- JavaScript
 
-## How It Works
+**🔗 [Ver proyecto en GitHub](https://github.com/IamBlack0/MonitoreoPlayas-OpenCV)**
 
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+---
+
+### 🛒 ArteSano
+E-commerce para pequeños emprendedores construido sobre un headless CMS. Plataforma escalable y fácil de mantener que amplía la exposición de productos artesanales.
+
+**🏆 Ganador del primer lugar en Hackathon** - Desarrollado en menos de 24 horas
+
+**Tecnologías utilizadas:**
+- Next.js
+- Shadcn
+- Strapi
+- Tailwind CSS
+- TypeScript
+- React
+
+**🔗 [Ver proyecto en GitHub](https://github.com/ELperrocode/arteSano)**
+
+## �️ Tecnologías y Habilidades
+
+### Frontend
+- React & Next.js
+- TypeScript & JavaScript
+- Tailwind CSS & Bootstrap
+- React Native
+
+### Backend
+- Node.js
+- PHP
+- Java & Spring Boot
+- Flask
+- API RESTful
+
+### Bases de Datos
+- PostgreSQL
+- MySQL
+- Supabase
+
+### Herramientas
+- GitHub
+- Figma
+- Expo
+- OpenCV
+- Strapi
+
+## 📞 Contacto
+
+- **GitHub**: [@IamBlack0](https://github.com/IamBlack0)
+- **LinkedIn**: [Ruben Rivera](https://www.linkedin.com/in/ruben-rivera-1238a8323/)
+- **Email**: [rubenrivera319@gmail.com](mailto:rubenrivera319@gmail.com)
+- **📁 Más Proyectos**: [GitHub Repositories](https://github.com/IamBlack0?tab=repositories)
+
+---
+
+⭐ **¡Dale una estrella si te gusta este proyecto!** ⭐
