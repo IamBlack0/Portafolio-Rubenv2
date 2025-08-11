@@ -153,13 +153,13 @@ export default function BentoPortfolio() {
               style={{ animation: `fadeInUp 0.8s ease-out 0.3s both` }}
             >
               <div className="absolute -inset-1 bg-white/5 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="relative h-full p-4">
+              <div className="relative h-full p-4 overflow-y-auto">
                 <h3 className="text-lg font-bold text-white mb-3">Frontend</h3>
                 <div className="space-y-2">
                   {skills.frontend.map((skill, index) => (
-                    <div key={index} className="flex items-center space-x-3 p-2 rounded-lg hover:bg-zinc-800/30 transition-all duration-300">
-                      <TechIcon name={skill.name} size={16} />
-                      <span className="text-zinc-300 text-sm">{skill.name}</span>
+                    <div key={index} className="flex items-center space-x-3 p-2 rounded-lg hover:bg-zinc-800/30 transition-all duration-300 min-w-0">
+                      <TechIcon name={skill.name} size={16} className="flex-shrink-0" />
+                      <span className="text-zinc-300 text-sm truncate">{skill.name}</span>
                     </div>
                   ))}
                 </div>
@@ -176,9 +176,9 @@ export default function BentoPortfolio() {
                 <h3 className="text-lg font-bold text-white mb-3">Backend</h3>
                 <div className="space-y-2">
                   {skills.backend.map((skill, index) => (
-                    <div key={index} className="flex items-center space-x-3 p-2 rounded-lg hover:bg-zinc-800/30 transition-all duration-300">
-                      <TechIcon name={skill.name} size={16} />
-                      <span className="text-zinc-300 text-sm">{skill.name}</span>
+                    <div key={index} className="flex items-center space-x-3 p-2 rounded-lg hover:bg-zinc-800/30 transition-all duration-300 min-w-0">
+                      <TechIcon name={skill.name} size={16} className="flex-shrink-0" />
+                      <span className="text-zinc-300 text-sm truncate">{skill.name}</span>
                     </div>
                   ))}
                 </div>
@@ -223,16 +223,16 @@ export default function BentoPortfolio() {
                 <div className="relative h-full p-5 flex flex-col justify-end">
                   <div className="space-y-3">
                     <h3 className="text-2xl font-bold text-white">Fazil</h3>
-                    <div className="relative">
+                    <div className="relative min-h-[4.5rem] flex items-end">
                       <p className="text-zinc-300 text-sm leading-relaxed opacity-100 group-hover:opacity-0 transition-opacity duration-300">
                         App de finanzas personales con IA para controlar gastos usando tu voz
                       </p>
-                      <p className="text-zinc-300 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute top-0 left-0">
+                      <p className="text-zinc-300 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute bottom-0 left-0 right-0">
                         App de finanzas personales con IA que te ayuda a controlar gastos usando tu voz. Clasifica automáticamente ingresos y gastos, ofrece estadísticas visuales, presupuestos y soporte offline.
                       </p>
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      {["React Native", "Expo", "IA"].map((tech, index) => (
+                      {["React Native", "Expo", "Tailwind", "JavaScript", "Supabase", "API", "Postgres"].map((tech, index) => (
                         <span key={index} className="px-2 py-1 text-xs bg-zinc-800/70 text-zinc-300 rounded-md border border-zinc-700/50">
                           {tech}
                         </span>
@@ -262,16 +262,16 @@ export default function BentoPortfolio() {
                 <div className="relative h-full p-5 flex flex-col justify-end">
                   <div className="space-y-3">
                     <h3 className="text-2xl font-bold text-white">AquaSense</h3>
-                    <div className="relative">
+                    <div className="relative min-h-[3rem] flex items-end">
                       <p className="text-zinc-300 text-sm leading-relaxed opacity-100 group-hover:opacity-0 transition-opacity duration-300">
                         Análisis de ecosistemas costeros con OpenCV
                       </p>
-                      <p className="text-zinc-300 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute top-0 left-0">
+                      <p className="text-zinc-300 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute bottom-0 left-0 right-0">
                         Aplicación web que permite evaluar la salud del ecosistema costero mediante análisis automatizado de imágenes de playas usando OpenCV.
                       </p>
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      {["Flask", "OpenCV", "IA"].map((tech, index) => (
+                      {["Flask", "OpenCV", "HTML", "CSS", "JavaScript"].map((tech, index) => (
                         <span key={index} className="px-2 py-1 text-xs bg-zinc-800/70 text-zinc-300 rounded-md border border-zinc-700/50">
                           {tech}
                         </span>
@@ -306,16 +306,16 @@ export default function BentoPortfolio() {
                         🏆 1er Lugar
                       </span>
                     </div>
-                    <div className="relative">
+                    <div className="relative min-h-[3rem] flex items-end">
                       <p className="text-zinc-300 text-sm leading-relaxed opacity-100 group-hover:opacity-0 transition-opacity duration-300">
                         E-commerce para emprendedores con headless CMS
                       </p>
-                      <p className="text-zinc-300 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute top-0 left-0">
+                      <p className="text-zinc-300 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute bottom-0 left-0 right-0">
                         E-commerce para pequeños emprendedores con headless CMS. Proyecto ganador del primer lugar en Hackathon desarrollado en menos de 24 horas.
                       </p>
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      {["Next.js", "Strapi", "TypeScript"].map((tech, index) => (
+                      {["Next.js", "Shadcn", "Strapi", "Tailwind", "TypeScript"].map((tech, index) => (
                         <span key={index} className="px-2 py-1 text-xs bg-zinc-800/70 text-zinc-300 rounded-md border border-zinc-700/50">
                           {tech}
                         </span>
