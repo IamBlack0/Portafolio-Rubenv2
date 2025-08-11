@@ -1,15 +1,28 @@
+'use client'
+
 import {
   GitHubLogoIcon,
   LinkedInLogoIcon,
   EnvelopeClosedIcon,
   ExternalLinkIcon,
+  ArrowDownIcon,
 } from "@radix-ui/react-icons"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { TechIcon } from "@/components/tech-icon"
 import Image from "next/image"
+import { useEffect, useState } from "react"
 
-export default function MinimalPortfolio() {
+export default function BentoPortfolio() {
+  const [isVisible, setIsVisible] = useState(false)
+  const [scrollY, setScrollY] = useState(0)
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY)
+    window.addEventListener('scroll', handleScroll)
+    setIsVisible(true)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
   const projects = [
     {
       title: "Fazil",
@@ -62,250 +75,353 @@ export default function MinimalPortfolio() {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#0E0E10' }}>
-      {/* Header */}
-      <header className="fixed top-0 right-0 z-50 p-6">
-        <nav className="flex items-center space-x-8 text-sm font-medium">
-          <a href="#about" className="transition-colors hover:text-zinc-300" style={{ color: '#A1A1AA' }}>
-            Sobre mí
-          </a>
-          <a href="#projects" className="transition-colors hover:text-zinc-300" style={{ color: '#A1A1AA' }}>
-            Proyectos
-          </a>
-          <a href="#skills" className="transition-colors hover:text-zinc-300" style={{ color: '#A1A1AA' }}>
-            Habilidades
-          </a>
+      {/* Floating Navigation */}
+      <header className="fixed top-8 right-8 z-50">
+        <nav className="backdrop-blur-md bg-zinc-900/30 border border-zinc-800/50 rounded-2xl px-6 py-3 shadow-2xl">
+          <div className="flex items-center space-x-6 text-sm font-medium">
+            <a 
+              href="#bento" 
+              className="transition-all duration-300 hover:text-white hover:scale-105" 
+              style={{ color: '#A1A1AA' }}
+            >
+              Inicio
+            </a>
+            <a 
+              href="https://github.com/IamBlack0?tab=repositories" 
+              target="_blank"
+              className="transition-all duration-300 hover:text-white hover:scale-105" 
+              style={{ color: '#A1A1AA' }}
+            >
+              Proyectos
+            </a>
+            <a 
+              href="mailto:rubenrivera319@gmail.com"
+              className="transition-all duration-300 hover:text-white hover:scale-105" 
+              style={{ color: '#A1A1AA' }}
+            >
+              Contacto
+            </a>
+          </div>
         </nav>
       </header>
 
-      {/* About Section */}
-      <section id="about" className="min-h-screen flex items-center justify-center px-6 py-20">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid gap-16 lg:grid-cols-2 items-center">
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <h1 className="text-5xl md:text-7xl font-bold tracking-tight" style={{ color: '#D4D4D8' }}>Ruben Rivera</h1>
-                <div className="w-20 h-1 bg-zinc-600 rounded-full"></div>
-              </div>
-              <p className="text-lg md:text-xl leading-relaxed" style={{ color: '#A1A1AA' }}>
-                Desarrollo de software con una pasión por aprender y crear. Busco constantemente nuevos desafíos para
-                ampliar mis conocimientos. Me encanta explorar las últimas tecnologías y aplicarlas a proyectos
-                prácticos para mejorar mis habilidades y contribuir a soluciones innovadoras.
-              </p>
-              <div className="flex space-x-4">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-zinc-600 hover:bg-zinc-800 bg-transparent transition-colors"
-                  style={{ color: '#D4D4D8' }}
-                  asChild
-                >
-                  <a href="https://github.com/IamBlack0" target="_blank" rel="noopener noreferrer">
-                    <GitHubLogoIcon className="mr-2 h-4 w-4" />
-                    GitHub
-                  </a>
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-zinc-600 hover:bg-zinc-800 bg-transparent transition-colors"
-                  style={{ color: '#D4D4D8' }}
-                  asChild
-                >
-                  <a href="https://www.linkedin.com/in/ruben-rivera-1238a8323/" target="_blank" rel="noopener noreferrer">
-                    <LinkedInLogoIcon className="mr-2 h-4 w-4" />
-                    LinkedIn
-                  </a>
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-zinc-600 hover:bg-zinc-800 bg-transparent transition-colors"
-                  style={{ color: '#D4D4D8' }}
-                  asChild
-                >
-                  <a href="mailto:rubenrivera319@gmail.com">
-                    <EnvelopeClosedIcon className="mr-2 h-4 w-4" />
-                    Contacto
-                  </a>
-                </Button>
+      {/* Bento Grid Layout */}
+      <section id="bento" className="min-h-screen p-4 lg:p-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 auto-rows-[120px]">
+            
+            {/* Header - Name & Title */}
+            <div 
+              className="col-span-2 lg:col-span-4 row-span-2 group relative overflow-hidden rounded-2xl bg-zinc-900/40 backdrop-blur border border-zinc-800/50 hover:border-zinc-600/50 transition-all duration-500"
+              style={{ animation: `fadeInUp 0.8s ease-out 0.1s both` }}
+            >
+              <div className="absolute -inset-1 bg-white/5 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative h-full p-6 flex flex-col justify-center">
+                <h1 className="text-3xl lg:text-5xl font-bold text-white mb-3">
+                  Ruben Rivera
+                </h1>
+                <div className="w-16 h-1 bg-white rounded-full mb-4"></div>
+                <p className="text-sm lg:text-lg text-zinc-400 leading-relaxed">
+                  Desarrollo de software con una pasión por aprender y crear. Busco constantemente nuevos desafíos para ampliar mis conocimientos. Me encanta explorar las últimas tecnologías y aplicarlas a proyectos prácticos para mejorar mis habilidades y contribuir a 
+                  <span className="text-white"> soluciones innovadoras</span>.
+                </p>
               </div>
             </div>
-            <div className="flex justify-center lg:justify-end">
-              <div className="relative">
-                <Image
-                  src="/rubenfoto-sinfondo.png"
-                  alt="Ruben Rivera"
-                  width={300}
-                  height={300}
-                  className="rounded-2xl border-2 border-zinc-700 hover:border-zinc-600 transition-all duration-300 hover:scale-105"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Projects Section */}
-      <section id="projects" className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="space-y-4 text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold" style={{ color: '#D4D4D8' }}>Proyectos Destacados</h2>
-            <div className="w-20 h-1 bg-zinc-600 rounded-full mx-auto"></div>
-            <p className="text-lg max-w-2xl mx-auto" style={{ color: '#A1A1AA' }}>
-              Algunos de los proyectos en los que he trabajado recientemente
-            </p>
-          </div>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project, index) => (
-              <div key={index} className="group cursor-pointer">
-                <div className="border border-zinc-800 hover:border-blue-500 transition-all duration-300 rounded-lg overflow-hidden bg-zinc-900/50">
-                  <div className="aspect-video overflow-hidden">
-                    <Image
-                      src={project.image || "/placeholder.svg?height=200&width=300&query=dark project screenshot"}
-                      alt={project.title}
-                      width={300}
-                      height={200}
-                      className="object-cover w-full h-full transition-transform group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="p-6 space-y-4">
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-lg font-semibold" style={{ color: '#D4D4D8' }}>{project.title}</h3>
-                      <Button size="sm" variant="ghost" className="p-1 hover:bg-zinc-800" style={{ color: '#A1A1AA' }} asChild>
-                        <a href={project.link} target="_blank" rel="noopener noreferrer">
-                          <ExternalLinkIcon className="h-4 w-4" />
-                        </a>
-                      </Button>
+            {/* Profile Image */}
+            <div 
+              className="col-span-2 row-span-2 group relative overflow-hidden rounded-2xl bg-zinc-900/40 backdrop-blur border border-zinc-800/50 hover:border-zinc-600/50 transition-all duration-500"
+              style={{ animation: `fadeInUp 0.8s ease-out 0.2s both` }}
+            >
+              <div className="absolute -inset-1 bg-white/5 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative h-full p-4 flex items-center justify-center">
+                <div className="relative group/img">
+                  <Image
+                    src="/rubenfoto-sinfondo.png"
+                    alt="Ruben Rivera"
+                    width={160}
+                    height={160}
+                    className="rounded-xl border border-zinc-700/50 transition-all duration-500 group-hover:scale-105"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Skills - Frontend */}
+            <div 
+              className="col-span-2 row-span-2 group relative overflow-hidden rounded-2xl bg-zinc-900/40 backdrop-blur border border-zinc-800/50 hover:border-zinc-600/50 transition-all duration-500"
+              style={{ animation: `fadeInUp 0.8s ease-out 0.3s both` }}
+            >
+              <div className="absolute -inset-1 bg-white/5 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative h-full p-4">
+                <h3 className="text-lg font-bold text-white mb-3">Frontend</h3>
+                <div className="space-y-2">
+                  {skills.frontend.map((skill, index) => (
+                    <div key={index} className="flex items-center space-x-3 p-2 rounded-lg hover:bg-zinc-800/30 transition-all duration-300">
+                      <TechIcon name={skill.name} size={16} />
+                      <span className="text-zinc-300 text-sm">{skill.name}</span>
                     </div>
-                    <p className="text-sm leading-relaxed" style={{ color: '#A1A1AA' }}>{project.description}</p>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Skills - Backend */}
+            <div 
+              className="col-span-2 row-span-2 group relative overflow-hidden rounded-2xl bg-zinc-900/40 backdrop-blur border border-zinc-800/50 hover:border-zinc-600/50 transition-all duration-500"
+              style={{ animation: `fadeInUp 0.8s ease-out 0.4s both` }}
+            >
+              <div className="absolute -inset-1 bg-white/5 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative h-full p-4 overflow-y-auto">
+                <h3 className="text-lg font-bold text-white mb-3">Backend</h3>
+                <div className="space-y-2">
+                  {skills.backend.map((skill, index) => (
+                    <div key={index} className="flex items-center space-x-3 p-2 rounded-lg hover:bg-zinc-800/30 transition-all duration-300">
+                      <TechIcon name={skill.name} size={16} />
+                      <span className="text-zinc-300 text-sm">{skill.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Tools */}
+            <div 
+              className="col-span-2 row-span-2 group relative overflow-hidden rounded-2xl bg-zinc-900/40 backdrop-blur border border-zinc-800/50 hover:border-zinc-600/50 transition-all duration-500"
+              style={{ animation: `fadeInUp 0.8s ease-out 0.5s both` }}
+            >
+              <div className="absolute -inset-1 bg-white/5 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative h-full p-4">
+                <h3 className="text-lg font-bold text-white mb-3">Herramientas</h3>
+                <div className="grid grid-cols-2 gap-2">
+                  {skills.tools.map((skill, index) => (
+                    <div key={index} className="flex items-center space-x-2 p-2 bg-zinc-800/30 rounded-lg hover:bg-zinc-700/50 transition-all duration-300">
+                      <TechIcon name={skill.name} size={14} />
+                      <span className="text-zinc-300 text-xs">{skill.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Project 1 - Fazil */}
+            <div 
+              className="col-span-2 md:col-span-2 lg:col-span-2 row-span-3 group relative overflow-hidden rounded-2xl bg-zinc-900/40 backdrop-blur border border-zinc-800/50 hover:border-zinc-600/50 transition-all duration-500"
+              style={{ animation: `fadeInUp 0.8s ease-out 0.6s both` }}
+            >
+              <div className="absolute -inset-1 bg-white/5 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative h-full overflow-hidden">
+                <div className="absolute inset-0">
+                  <Image
+                    src="/news/FAZIL.png"
+                    alt="Fazil App"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/50 to-transparent"></div>
+                </div>
+                <div className="relative h-full p-5 flex flex-col justify-end">
+                  <div className="space-y-3">
+                    <h3 className="text-2xl font-bold text-white">Fazil</h3>
+                    <div className="relative">
+                      <p className="text-zinc-300 text-sm leading-relaxed opacity-100 group-hover:opacity-0 transition-opacity duration-300">
+                        App de finanzas personales con IA para controlar gastos usando tu voz
+                      </p>
+                      <p className="text-zinc-300 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute top-0 left-0">
+                        App de finanzas personales con IA que te ayuda a controlar gastos usando tu voz. Clasifica automáticamente ingresos y gastos, ofrece estadísticas visuales, presupuestos y soporte offline.
+                      </p>
+                    </div>
                     <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech, techIndex) => (
-                        <div key={techIndex} className="flex items-center gap-1 px-2 py-1 rounded-md bg-zinc-800/50">
-                          <TechIcon name={tech} size={14} />
-                          <span className="text-xs" style={{ color: '#A1A1AA' }}>{tech}</span>
-                        </div>
+                      {["React Native", "Expo", "IA"].map((tech, index) => (
+                        <span key={index} className="px-2 py-1 text-xs bg-zinc-800/70 text-zinc-300 rounded-md border border-zinc-700/50">
+                          {tech}
+                        </span>
                       ))}
                     </div>
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
-          <div className="text-center mt-12">
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-zinc-600 hover:bg-zinc-800 bg-transparent transition-colors"
-              style={{ color: '#D4D4D8' }}
-              asChild
-            >
-              <a href="https://github.com/IamBlack0?tab=repositories" target="_blank" rel="noopener noreferrer">
-                Ver Más Proyectos
-              </a>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Skills Section */}
-      <section id="skills" className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="space-y-4 text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold" style={{ color: '#D4D4D8' }}>Habilidades Técnicas</h2>
-            <div className="w-20 h-1 bg-zinc-600 rounded-full mx-auto"></div>
-            <p className="text-lg max-w-2xl mx-auto" style={{ color: '#A1A1AA' }}>Tecnologías y herramientas que domino</p>
-          </div>
-          <div className="grid gap-8 md:grid-cols-3">
-            <Card className="bg-zinc-900/50 border-zinc-700 hover:border-zinc-600 transition-all duration-300">
-              <CardHeader>
-                <CardTitle className="text-xl font-bold text-center" style={{ color: '#D4D4D8' }}>
-                  Frontend
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid gap-3">
-                  {skills.frontend.map((skill, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center space-x-3 p-2 rounded-lg hover:bg-zinc-800 transition-colors"
-                    >
-                      <TechIcon name={skill.name} size={16} />
-                      <span style={{ color: '#D4D4D8' }}>{skill.name}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-            <Card className="bg-zinc-900/50 border-zinc-700 hover:border-zinc-600 transition-all duration-300">
-              <CardHeader>
-                <CardTitle className="text-xl font-bold text-center" style={{ color: '#D4D4D8' }}>
-                  Backend
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid gap-3">
-                  {skills.backend.map((skill, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center space-x-3 p-2 rounded-lg hover:bg-zinc-800 transition-colors"
-                    >
-                      <TechIcon name={skill.name} size={16} />
-                      <span style={{ color: '#D4D4D8' }}>{skill.name}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-            <Card className="bg-zinc-900/50 border-zinc-700 hover:border-zinc-600 transition-all duration-300">
-              <CardHeader>
-                <CardTitle className="text-xl font-bold text-center" style={{ color: '#D4D4D8' }}>
-                  Herramientas
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid gap-3">
-                  {skills.tools.map((skill, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center space-x-3 p-2 rounded-lg hover:bg-zinc-800 transition-colors"
-                    >
-                      <TechIcon name={skill.name} size={16} />
-                      <span style={{ color: '#D4D4D8' }}>{skill.name}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="border-t border-zinc-800 py-12 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col items-center space-y-6">
-            <div className="flex space-x-6">
-              <Button size="sm" variant="ghost" className="hover:bg-zinc-800" style={{ color: '#A1A1AA' }} asChild>
-                <a href="https://github.com/IamBlack0" target="_blank" rel="noopener noreferrer">
-                  <GitHubLogoIcon className="h-4 w-4" />
-                </a>
-              </Button>
-              <Button size="sm" variant="ghost" className="hover:bg-zinc-800" style={{ color: '#A1A1AA' }} asChild>
-                <a href="https://www.linkedin.com/in/ruben-rivera-1238a8323/" target="_blank" rel="noopener noreferrer">
-                  <LinkedInLogoIcon className="h-4 w-4" />
-                </a>
-              </Button>
-              <Button size="sm" variant="ghost" className="hover:bg-zinc-800" style={{ color: '#A1A1AA' }} asChild>
-                <a href="mailto:rubenrivera319@gmail.com">
-                  <EnvelopeClosedIcon className="h-4 w-4" />
-                </a>
-              </Button>
             </div>
-            <div className="w-full h-px bg-gradient-to-r from-transparent via-zinc-700 to-transparent"></div>
-            <p className="text-sm" style={{ color: '#71717A' }}>© 2025 Ruben Rivera. Todos los derechos reservados.</p>
+
+            {/* Project 2 - AquaSense */}
+            <div 
+              className="col-span-2 md:col-span-2 lg:col-span-2 row-span-3 group relative overflow-hidden rounded-2xl bg-zinc-900/40 backdrop-blur border border-zinc-800/50 hover:border-zinc-600/50 transition-all duration-500"
+              style={{ animation: `fadeInUp 0.8s ease-out 0.7s both` }}
+            >
+              <div className="absolute -inset-1 bg-white/5 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <a href="https://github.com/IamBlack0/MonitoreoPlayas-OpenCV" target="_blank" className="relative h-full block overflow-hidden">
+                <div className="absolute inset-0">
+                  <Image
+                    src="/news/monitoreo con ia.png"
+                    alt="AquaSense"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/50 to-transparent"></div>
+                </div>
+                <div className="relative h-full p-5 flex flex-col justify-end">
+                  <div className="space-y-3">
+                    <h3 className="text-2xl font-bold text-white">AquaSense</h3>
+                    <div className="relative">
+                      <p className="text-zinc-300 text-sm leading-relaxed opacity-100 group-hover:opacity-0 transition-opacity duration-300">
+                        Análisis de ecosistemas costeros con OpenCV
+                      </p>
+                      <p className="text-zinc-300 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute top-0 left-0">
+                        Aplicación web que permite evaluar la salud del ecosistema costero mediante análisis automatizado de imágenes de playas usando OpenCV.
+                      </p>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {["Flask", "OpenCV", "IA"].map((tech, index) => (
+                        <span key={index} className="px-2 py-1 text-xs bg-zinc-800/70 text-zinc-300 rounded-md border border-zinc-700/50">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            {/* Project 3 - ArteSano */}
+            <div 
+              className="col-span-2 md:col-span-2 lg:col-span-2 row-span-3 group relative overflow-hidden rounded-2xl bg-zinc-900/40 backdrop-blur border border-zinc-800/50 hover:border-zinc-600/50 transition-all duration-500"
+              style={{ animation: `fadeInUp 0.8s ease-out 0.8s both` }}
+            >
+              <div className="absolute -inset-1 bg-white/5 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <a href="https://github.com/ELperrocode/arteSano" target="_blank" className="relative h-full block overflow-hidden">
+                <div className="absolute inset-0">
+                  <Image
+                    src="/news/artesano.webp"
+                    alt="ArteSano"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/50 to-transparent"></div>
+                </div>
+                <div className="relative h-full p-5 flex flex-col justify-end">
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <h3 className="text-2xl font-bold text-white">ArteSano</h3>
+                      <span className="px-2 py-1 bg-yellow-500/20 text-yellow-400 text-xs rounded-md border border-yellow-500/30">
+                        🏆 1er Lugar
+                      </span>
+                    </div>
+                    <div className="relative">
+                      <p className="text-zinc-300 text-sm leading-relaxed opacity-100 group-hover:opacity-0 transition-opacity duration-300">
+                        E-commerce para emprendedores con headless CMS
+                      </p>
+                      <p className="text-zinc-300 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute top-0 left-0">
+                        E-commerce para pequeños emprendedores con headless CMS. Proyecto ganador del primer lugar en Hackathon desarrollado en menos de 24 horas.
+                      </p>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {["Next.js", "Strapi", "TypeScript"].map((tech, index) => (
+                        <span key={index} className="px-2 py-1 text-xs bg-zinc-800/70 text-zinc-300 rounded-md border border-zinc-700/50">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            {/* Contact Card */}
+            <div 
+              className="col-span-2 md:col-span-4 lg:col-span-6 row-span-1 group relative overflow-hidden rounded-2xl bg-zinc-900/40 backdrop-blur border border-zinc-800/50 hover:border-zinc-600/50 transition-all duration-500"
+              style={{ animation: `fadeInUp 0.8s ease-out 0.9s both` }}
+            >
+              <div className="absolute -inset-1 bg-white/5 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative h-full p-6 flex items-center justify-between">
+                <div className="space-y-1">
+                  <h3 className="text-xl font-bold text-white">¿Trabajamos juntos?</h3>
+                  <p className="text-zinc-400 text-sm">Siempre abierto a nuevas oportunidades</p>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <a 
+                    href="https://github.com/IamBlack0" 
+                    target="_blank" 
+                    className="p-3 rounded-xl bg-zinc-800/50 hover:bg-white hover:text-black transition-all duration-300 hover:scale-105"
+                    style={{ color: '#A1A1AA' }}
+                  >
+                    <GitHubLogoIcon className="h-5 w-5" />
+                  </a>
+                  <a 
+                    href="https://www.linkedin.com/in/ruben-rivera-1238a8323/" 
+                    target="_blank" 
+                    className="p-3 rounded-xl bg-zinc-800/50 hover:bg-white hover:text-black transition-all duration-300 hover:scale-105"
+                    style={{ color: '#A1A1AA' }}
+                  >
+                    <LinkedInLogoIcon className="h-5 w-5" />
+                  </a>
+                  <Button
+                    size="sm"
+                    className="bg-white text-black hover:bg-zinc-200 transition-all duration-300 hover:scale-105"
+                    asChild
+                  >
+                    <a href="mailto:rubenrivera319@gmail.com">
+                      Contactar
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
-      </footer>
+      </section>
+
+      {/* Global Styles */}
+      <style jsx global>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes animate-fade-in {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        .animate-fade-in {
+          animation: animate-fade-in 1s ease-out forwards;
+          opacity: 0;
+        }
+        
+        html {
+          scroll-behavior: smooth;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+          width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+          background: #0E0E10;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+          background: #27272A;
+          border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+          background: #3F3F46;
+        }
+      `}</style>
     </div>
   )
 }
